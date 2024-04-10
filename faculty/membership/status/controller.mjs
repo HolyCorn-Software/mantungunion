@@ -73,32 +73,50 @@ export default class MembershipStatusController {
      * @param {string} param0.userid
      */
     async getMembershipRecord({ userid }) {
+
+        const createPayment = async () => {
+            return await (await FacultyPlatform.get().connectionManager.overload.finance()).payment.create({
+                owners: [userid],
+                amount: await this.getMembershipFee(),
+                type: 'invoice',
+                meta: {
+                    note: `Registration Fee`,
+                    reason: `Registration Fee`,
+                    product: {
+                        category: 'other',
+                        type: 'virtual',
+                        name: 'Registration Fee',
+                        description: 'registration fee.'
+                    }
+                }
+            });
+        }
         // If there's no membership record for the given user, create one with the default false values
-        return (await collections.status.findOne({ userid })) || await (async () => {
+        return await (async existing => {
+            if (!existing) return
+
+            if (!existing.status) {
+                // In case there's a membership record with a failed payment...
+                const status = await (await FacultyPlatform.get().connectionManager.overload.finance()).payment.getPayment({ id: existing.payment })
+                if (status.failed?.fatal) {
+                    existing.payment = await createPayment()
+                    collections.status.updateOne({ userid }, { $set: { payment: existing.payment } })
+                }
+            }
+            
+            return existing
+        })((await collections.status.findOne({ userid }))) || await (async () => {
             /** @type {mantungunion.membership.status.StatusEntry} */
             const data = {
                 status: false,
                 userid,
-                payment: await (await FacultyPlatform.get().connectionManager.overload.finance()).payment.create({
-                    owners: [userid],
-                    amount: await this.getMembershipFee(),
-                    type: 'invoice',
-                    meta: {
-                        note: `Registration Fee`,
-                        reason: `Registration Fee`,
-                        product: {
-                            category: 'other',
-                            type: 'virtual',
-                            name: 'Registration Fee',
-                            description: 'registration fee.'
-                        }
-                    }
-                }),
+                payment: await createPayment(),
             }
 
             await collections.status.updateOne({ userid }, { $set: data }, { upsert: true })
             return data
         })()
+
     }
 
 
