@@ -1,0 +1,37 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    The info-members widget
+    This stylesheet gives shape to the widget
+*/
+.hc-mantungunion-standard-slider>.container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-title-font-size) * 0.75);
+}
+
+.hc-mantungunion-standard-slider>.container>.navigation {
+    display: flex;
+    gap: var(--base-text-font-size);
+    font-family: jua;
+    font-size: var(--base-title-font-size);
+    padding-left: 1em;
+    color: var(--color-primary-dark);
+}
+
+.hc-mantungunion-standard-slider>.container>.navigation>* {
+    cursor: pointer;
+    transition: 0.5s 0.25s;
+    outline: none;
+}
+
+.hc-mantungunion-standard-slider>.container>.navigation>*:hover {
+    color: var(--color-link-light);
+}
+
+
+.hc-mantungunion-standard-slider>.container>.main>.hc-wide-slider>.container>.items {
+    overflow-x: auto;
+    gap: calc(var(--base-title-font-size) * 1.25);
+    padding: var(--base-text-font-size);
+}

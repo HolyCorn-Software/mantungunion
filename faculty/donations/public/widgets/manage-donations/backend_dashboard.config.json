@@ -1,0 +1,10 @@
+{
+    "admin": [
+        {
+            "label": "Donations",
+            "name": "donations",
+            "icon": "./donate.svg",
+            "view": "./widget.mjs"
+        }
+    ]
+}

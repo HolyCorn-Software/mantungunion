@@ -1,0 +1,46 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the info-history widget
+*/
+
+
+.hc-mantungunion-info-history>.container {
+    display: flex;
+    flex-direction: column;
+    font-size: calc(var(--base-text-font-size) * 2);
+    border-radius: clamp(1rem, 2.5em, 8vw);
+}
+
+.hc-mantungunion-info-history>.container::before {
+    content: '';
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    position: absolute;
+    background-image: url('./bg.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(65%) grayscale(1);
+
+}
+
+
+.hc-mantungunion-info-history>.container>.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(12em, 50vw, 200em);
+    padding: 0.75em;
+}
+
+.hc-mantungunion-info-history>.container>.main>.hc-action-button>.container {
+    background-color: var(--color-primary-dark);
+    color: var(--color-accent-dark);
+    font-family: var(--action-button-font);
+    border-radius: 0.5em;
+    font-size: clamp(1rem, var(--base-title-font-size), 7vw);
+    opacity: 0.8;
+}

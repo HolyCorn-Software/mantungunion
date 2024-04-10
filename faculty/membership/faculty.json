@@ -1,0 +1,5 @@
+{
+    "label": "Faculty of Membership",
+    "name": "membership",
+    "init": "./exec.mjs"
+}

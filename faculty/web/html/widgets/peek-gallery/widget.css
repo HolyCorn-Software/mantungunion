@@ -1,0 +1,46 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet is meant for the peek-gallery widget
+*/
+
+
+
+.hc-mantungunion-peek-gallery>.container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-text-font-size) * 2);
+    align-items: center;
+    padding: var(--base-text-font-size);
+    padding-top: calc(var(--base-text-font-size) * 6);
+    padding-bottom: calc(var(--base-text-font-size) * 6);
+}
+
+.hc-mantungunion-peek-gallery>.container>.title {
+    font-size: clamp(var(--base-text-font-size)*1.2, var(--base-title-font-size) * 1.2, 10rem);
+    font-family: var(--title-font);
+}
+
+.hc-mantungunion-peek-gallery>.container>.actions>*>.hc-action-button>.container {
+    background-color: var(--color-accent-dark);
+    color: var(--color-primary-light);
+    border-radius: 1em;
+    font-family: var(--action-button-font);
+    font-size: clamp(var(--base-text-font-size) * 1.2, var(--base-title-font-size) * 0.65, 10rem);
+}
+
+.hc-mantungunion-peek-gallery-item>.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-text-font-size);
+    font-size: clamp(var(--base-text-font-size) * 1.2, var(--base-title-font-size) * 0.5, 10rem);
+    font-family: var(--mid-title-font);
+}
+
+.hc-mantungunion-peek-gallery-item>.container>.image {
+    width: 20em;
+    aspect-ratio: 16/9;
+    border-radius: 3em;
+    background-size: cover;
+    background-position: center;
+}

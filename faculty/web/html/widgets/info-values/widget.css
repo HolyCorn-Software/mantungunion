@@ -1,0 +1,81 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the info-values widget
+*/
+
+
+.hc-mantungunion-info-values>.container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-title-font-size) * 3);
+    align-items: center;
+    padding: var(--base-text-font-size);
+    padding-bottom: calc(var(--base-text-font-size) * 10);
+    padding-top: calc(var(--base-text-font-size) * 10);
+}
+
+.hc-mantungunion-info-values>.container>.title {
+    font-size: clamp(var(--base-text-font-size) * 3, var(--base-title-font-size) * 1.5, 5vw);
+    display: flex;
+    gap: 1ex;
+    flex-wrap: wrap;
+    font-family: var(--title-font);
+    text-align: center;
+}
+
+.hc-mantungunion-info-values>.container>.title>highlight {
+    color: var(--color-primary-dark);
+}
+
+.hc-mantungunion-info-values>.container>.main {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-title-font-size) * 1.2);
+    align-items: center;
+}
+
+.hc-mantungunion-info-values>.container>.main>.items {
+    display: flex;
+    gap: calc(var(--base-title-font-size) * 0.7);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hc-mantungunion-info-values>.container>.main>.actions>.more {
+    color: var(--color-link-light);
+    font-family: var(--mid-title-font);
+    font-size: clamp(var(--base-text-font-size) * 1.3, var(--base-title-font-size) * 0.75, 3.5vw);
+    text-align: center;
+}
+
+.hc-mantungunion-info-values-item>.container {
+    display: flex;
+    aspect-ratio: 1/1;
+    width: 7em;
+    font-size: clamp(var(--base-text-font-size) * 1.4, var(--base-title-font-size) * 0.85, 4vw);
+    font-family: var(--mid-title-font);
+    color: var(--color-primary-light);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hc-mantungunion-info-values-item>.container>.label {
+    max-width: calc(100% - (var(--base-text-font-size) * 4));
+    word-break: break-all;
+    text-align: center;
+}
+
+.hc-mantungunion-info-values-item>.container>.img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    color: var(--color-primary-dark);
+}
+
+.hc-mantungunion-info-values-item>.container>.img>* {
+    width: 100% !important;
+    height: 100% !important;
+}

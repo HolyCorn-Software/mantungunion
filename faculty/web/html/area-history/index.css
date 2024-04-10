@@ -1,0 +1,20 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the area-history page, where users can view history about various areas of the union
+*/
+
+
+body>.hc-mantungunion-hero>.container::after {
+    width: calc(100% + 4em);
+    height: calc(100% + 4em);
+    top: -5.5em;
+    left: -4em;
+    background-image: url('./bg.jpg');
+    z-index: 4;
+    opacity: 0.3;
+    aspect-ratio: unset;
+    background-size: cover;
+    background-position: center;
+
+}

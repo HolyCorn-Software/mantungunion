@@ -1,0 +1,150 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the donations-listing widget
+*/
+
+
+.hc-mantungunion-donations-listing>.container {
+    display: flex;
+    flex-direction: column;
+    --padding-main: clamp(2em, var(--base-title-font-size) * 3, 7em);
+    padding-top: var(--padding-main);
+    padding-bottom: var(--padding-main);
+}
+
+.hc-mantungunion-donations-listing>.container>.items {
+    display: flex;
+    gap: clamp(1em, var(--base-title-font-size) * 2.5, max(4vw, 2em));
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.hc-mantungunion-donations-listing-item>.container {
+    display: inline-flex;
+    flex-direction: column;
+    gap: calc(var(--base-title-font-size) * 0.75);
+    font-size: clamp(var(--base-text-font-size), var(--base-title-font-size) * 0.5, 8vw);
+    font-family: var(--text-font);
+    max-width: clamp(min(350px, 100vw - 5em), 100vw - 6em, 750px);
+    min-height: 18em;
+    padding: 3.5em;
+    padding-left: 2em;
+    padding-right: 1em;
+    border-radius: 1.5em;
+    color: var(--color-primary-light);
+    justify-content: center;
+}
+
+.hc-mantungunion-donations-listing-item>.container::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    border-radius: inherit;
+    background-color: var(--color-primary-dark);
+    background-image: url('/$/web/html/widgets/hero/bg.png');
+    background-size: contain;
+    background-position: center bottom;
+    filter: brightness(0.8) grayscale(0.7);
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.hc-mantungunion-donations-listing-item>.container::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0;
+    border-radius: inherit;
+    background-color: var(--color-primary-dark);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.hc-mantungunion-donations-listing-item>.container>.label {
+    font-size: 1.75em;
+    font-family: var(--title-font);
+}
+
+.hc-mantungunion-donations-listing-item>.container>.description {
+    max-width: 600px;
+    font-weight: 900;
+}
+
+.hc-mantungunion-donations-listing-item>.container>.action {
+    font-size: 1.35em;
+}
+
+.hc-mantungunion-donations-listing-item>.container>.action>.hc-action-button>.container {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    font-family: var(--action-button-font);
+    border-radius: 0.95em;
+}
+
+.hc-mantungunion-donations-listing-item>.container>.donors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    align-items: flex-end;
+    /* transform: translateY(-0.5em); */
+    position: absolute;
+    top: calc(100% - 6.5em);
+    align-self: flex-end;
+    width: calc(100% - 2em);
+}
+
+.hc-mantungunion-donations-listing-item>.container>.donors>.title {
+    font-family: var(--mid-title-font);
+}
+
+
+.hc-mantungunion-donations-listing-item>.container>.donors>.items {
+    display: flex;
+    gap: 1em;
+    overflow: hidden;
+    overflow-x: scroll;
+    justify-content: flex-end;
+    max-width: calc(100% - 1.5em);
+}
+
+.hc-mantungunion-donations-listing-item>.container>.donors>.items::-webkit-scrollbar {
+    opacity: 0;
+}
+
+.hc-mantungunion-donations-listing-item>.container:has(.donors >.items:empty) {
+    padding-bottom: 1.5em;
+}
+
+.hc-mantungunion-donations-listing-item>.container>.donors:has(.items:empty) {
+    display: none;
+}
+
+.hc-mantungunion-donations-listing-item>.container>.donors>.items:empty::before {
+    content: 'No one yet. Be the first to donate.';
+    filter: invert(1);
+    font-size: 0.75em;
+}
+
+.hc-mantungunion-donations-listing-item>.container>.donors>.items>.hc-hcts-modernuser-inline-profile>.container>.main {
+    flex-direction: column;
+    gap: 0.25em;
+}
+
+.hc-mantungunion-donations-listing-item>.container>.donors>.items>.hc-hcts-modernuser-inline-profile>.container>.main>.label {
+    max-width: 4.5em;
+    font-size: 0.6em;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.hc-mantungunion-donations-listing-item>.container>.donors>.items>.hc-hcts-modernuser-inline-profile>.container>.main>.icon {
+    border: 0.125em solid currentColor;
+}

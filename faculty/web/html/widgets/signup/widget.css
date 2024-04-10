@@ -1,0 +1,200 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet targets the signup widget
+*/
+
+.hc-mantungunion-signup {
+    display: flex;
+    justify-content: center;
+    --transform: translateY(calc(clamp(var(--base-text-font-size) * 1.35, var(--base-title-font-size) * 1.2, 7.5vw) * -3.5));
+}
+
+.hc-mantungunion-signup>.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-text-font-size);
+    width: clamp(300px - 4em, 80vw, 1100px);
+    padding: clamp(1em, var(--base-title-font-size) * 1.5, 5vw);
+    padding-bottom: 2%;
+    transform: var(--transform);
+    background-color: rgba(255, 255, 255, 0.925);
+    box-shadow: 0px 0px 3.5em rgb(121, 119, 119);
+    border-radius: 2em;
+    z-index: 6;
+}
+
+.hc-mantungunion-signup>.container>.main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    gap: calc(var(--base-title-font-size) * 0.75);
+}
+
+.hc-mantungunion-signup>.container>.main>.terms {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, var(--base-text-font-size) * 2.5, 4vw);
+    font-size: clamp(var(--base-text-font-size) * 1, var(--base-title-font-size) * 0.45, 2.5vw);
+    max-width: clamp(450px, 850px, 47%);
+    flex-grow: 1;
+}
+
+.hc-mantungunion-signup>.container>.main>.terms>.title {
+    font-size: 1.95em;
+    color: var(--color-accent-dark);
+    font-family: var(--title-font);
+}
+
+.hc-mantungunion-signup>.container>.main>.terms>.read-more>.hc-action-button>.container {
+    background-color: var(--color-accent-dark);
+    color: var(--color-primary-dark);
+    font-family: var(--action-button-font);
+    border-radius: 0.75em;
+    min-width: 10em;
+}
+
+.hc-mantungunion-signup>.container>.main>.terms>.title>highlight {
+    display: inline;
+    color: var(--color-primary-dark);
+}
+
+.hc-mantungunion-signup>.container>.main>.terms>.content {
+    font-family: var(--text-font);
+}
+
+
+.hc-mantungunion-signup>.container>.main>.auth {
+    min-width: clamp(150px, 450px, 50% - 2em);
+    position: relative;
+    max-width: clamp(200px, 500px, 45%);
+    padding-top: 2em;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-onboarding {
+    padding: 1.5em;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-onboarding>.container {
+    padding: 1.5em;
+    box-shadow: 0px 0px 1em rgb(173, 199, 230);
+}
+
+
+@media screen and (max-width:1128px) {
+    .hc-mantungunion-signup>.container {
+        width: clamp(250px - 4em, 80vw, 550px);
+    }
+
+    .hc-mantungunion-signup>.container>.main {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hc-mantungunion-signup>.container>.main>.auth {
+        max-width: unset;
+        min-width: clamp(250px, 100% - 2em, 600px);
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .hc-mantungunion-signup>.container>.main>.terms {
+        max-width: calc(100% - 2em);
+    }
+}
+
+.hc-mantungunion-signup>.container>.warning {
+    text-align: center;
+}
+
+.hc-mantungunion-signup .hc-htmlhc-loading-action-error-ui {
+    z-index: 7;
+    transform: var(--transform);
+}
+
+
+
+/** Customizations for the modernuser-provided login widgets */
+
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container {
+    background-color: unset;
+    padding-top: unset;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container>.main {
+    width: unset;
+
+}
+
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container>.main-section {
+    padding-bottom: 0px;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container::before {
+    content: unset;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container>.top {
+    display: none;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget {
+    height: unset;
+    align-items: flex-start;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget>.container {
+    width: calc(100% - 2em);
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget>.container>.top {
+    display: none;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget>.container>.main {
+    padding-top: 0px;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget>.container>.main>.caption {
+    display: none;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget>.container>.main>.remember {
+    display: none;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget>.container>.main>.action {
+    padding-top: 1em;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget>.container>.main>.action>.hc-action-button>.container {
+    background-color: var(--color-primary-dark);
+    color: var(--color-primary-light);
+    font-family: var(--action-button-font);
+    font-weight: 200;
+    border-radius: 0.75em;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget .hc-multi-flex-form-textbox>.container input,
+.hc-multi-flex-form-textbox>.container textarea {
+    border: 0.15em solid var(--color-accent-dark);
+    padding: 0.5em;
+    font-family: var(--mid-title-font);
+    font-weight: unset;
+    border-radius: 0.75em;
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget .hc-multi-flex-form-textbox>.container::before {
+    font-family: var(--text-font);
+    font-weight: 700;
+    color: var(--color-accent-dark);
+}
+
+.hc-mantungunion-signup .hc-cayofedpeople-login>.container .hc-telep-phone-login-widget>.container>.main>.change-auth-action {
+    font-family: var(--mid-title-font);
+    font-size: 0.95em;
+}

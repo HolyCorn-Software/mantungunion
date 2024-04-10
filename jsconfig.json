@@ -1,0 +1,53 @@
+{
+    "compilerOptions": {
+        "baseUrl": "",
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "/$/system/static/*": [
+                "system/public/*"
+            ],
+            "/$/web/html/*": [
+                "./faculty/web/html/*"
+            ],
+            "/$/shared/static/*": [
+                "./faculty/web/shared/*"
+            ],
+            "/$/modernuser/static/*": [
+                "faculty/modernuser/public/*"
+            ],
+            "/$/modernuser/role/static/*": [
+                "faculty/modernuser/role/public/*"
+            ],
+            "/$/modernuser/static/authentication/lib/*": [
+                "faculty/modernuser/authentication/lib/*"
+            ],
+            "/$/modernuser/notification/static/*": [
+                "faculty/modernuser/notification/public/*"
+            ],
+            "/$/modernuser/onboarding/static/*": [
+                "faculty/modernuser/onboarding/public/*"
+            ],
+            "/$/modernuser/rolegroup/static/*": [
+                "faculty/modernuser/rolegroup/public/*"
+            ],
+            "/$/modernuser/zonation/static/*": [
+                "faculty/modernuser/zonation/public/*"
+            ],
+            "/$/finance/static/*": [
+                "faculty/finance/public/*"
+            ],
+            "/$/finance/payment/static/*": [
+                "faculty/finance/payment/public/*"
+            ],
+            "/$/finance/product/static/*": [
+                "faculty/finance/product/public/*"
+            ],
+            "/$/donations/static/*": [
+                "faculty/donations/public/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

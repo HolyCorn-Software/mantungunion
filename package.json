@@ -1,0 +1,31 @@
+{
+  "name": "mantungunion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "start.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-json-modules start.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.540.0",
+    "@babel/core": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "archiver": "^7.0.1",
+    "babel-preset-minify": "^0.5.2",
+    "chokidar": "^3.6.0",
+    "colors": "^1.4.0",
+    "formidable-serverless": "^1.1.1",
+    "live-plugin-manager": "^0.18.1",
+    "mongodb": "^6.5.0",
+    "muser_common": "^3.0.0",
+    "node-fetch": "^3.3.2",
+    "node-static": "^0.7.11",
+    "short-uuid": "^4.2.2",
+    "unzipper": "^0.10.14"
+  }
+}

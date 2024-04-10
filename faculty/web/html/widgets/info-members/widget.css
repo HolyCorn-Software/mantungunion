@@ -1,0 +1,70 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    The info-members widget
+    This stylesheet gives shape to the widget
+*/
+
+
+
+.hc-mantungunion-info-members>.container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-text-font-size) * 3);
+    align-items: center;
+    padding-top: calc(var(--base-title-font-size) * 4);
+    padding-bottom: calc(var(--base-title-font-size) * 4);
+    --txt-size: clamp(1rem, var(--base-text-font-size) * 1.45, 6vw);
+}
+
+.hc-mantungunion-info-members>.container>.title {
+    font-size: calc(var(--base-title-font-size) * 0.95);
+    font-family: var(--title-font);
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+.hc-mantungunion-info-members>.container>.actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-text-font-size);
+    font-family: var(--action-button-font);
+    align-items: center;
+}
+
+.hc-mantungunion-info-members>.container>.actions>.more {
+    color: var(--color-link-light);
+    font-size: var(--txt-size);
+}
+
+.hc-mantungunion-info-members>.container>.actions>.join>.hc-action-button>.container {
+    background-color: var(--color-primary-dark);
+    color: var(--color-primary-light);
+    font-family: inherit;
+    font-size: calc(var(--base-title-font-size) * 0.75);
+    border-radius: 0.85em;
+    padding: 0.25em;
+}
+
+
+.hc-mantungunion-info-members-item>.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--base-title-font-size) * 0.4);
+    font-family: var(--mid-title-font);
+    text-align: center;
+    font-size: var(--txt-size);
+}
+
+.hc-mantungunion-info-members-item>.container>.img {
+    --size: calc(var(--base-title-font-size) * 4);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100%;
+    background-size: cover;
+    background-position: center;
+    border: 0.25em solid var(--color-primary-dark);
+}

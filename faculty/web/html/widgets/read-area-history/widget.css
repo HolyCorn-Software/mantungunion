@@ -1,0 +1,21 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the read-area-history widget, where users can read about the history of a particular area in the union
+*/
+
+
+.hc-mantungunion-read-area-history>.container {
+    font-size: clamp(var(--base-text-font-size) * 1, var(--base-title-font-size) * 0.5, 4.5vw);
+    font-family: var(--text-font);
+}
+
+.hc-mantungunion-read-area-history>.container .history-content {
+    padding: 0.75em;
+    border-radius: 0.5em;
+    background-color: #fafafa;
+}
+
+.hc-mantungunion-read-area-history .hc-sections-thread-map-item>.container>.main>.label {
+    font-family: var(--mid-title-font);
+}

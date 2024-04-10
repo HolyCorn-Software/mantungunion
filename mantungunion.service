@@ -1,0 +1,13 @@
+
+[Unit]
+Description=mantungunion by HolyCorn Software
+
+[Service]
+User=root
+ExecStart=/usr/bin/mantungunion run prod
+Restart=always
+StartLimitIntervalSec=20
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target

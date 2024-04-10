@@ -1,0 +1,42 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the mini-info-villages widget
+*/
+
+.hc-mantungunion-mini-info-villages>.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--base-text-font-size) * 4);
+    padding: calc(var(--base-text-font-size) * 0.5);
+
+    --padding-y: calc(var(--base-text-font-size) * 10);
+    padding-top: var(--padding-y);
+    padding-bottom: clamp(1rem, var(--padding-y), 10vw);
+}
+
+.hc-mantungunion-mini-info-villages>.container>.title {
+    font-size: var(--base-title-font-size);
+    font-family: var(--title-font);
+    text-align: center;
+}
+
+.hc-mantungunion-mini-info-villages>.container>.title>count {
+    color: var(--color-primary-dark);
+}
+
+.hc-mantungunion-mini-info-villages>.container>.items {
+    display: flex;
+    max-width: calc(100% - (var(--base-text-font-size) / 2));
+    gap: 1em;
+    font-family: var(--title-font);
+    font-size: calc(var(--base-text-font-size) * 1.5);
+    color: var(--color-primary-dark);
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.hc-mantungunion-mini-info-villages>.container>.items::-webkit-scrollbar {
+    color: transparent;
+}

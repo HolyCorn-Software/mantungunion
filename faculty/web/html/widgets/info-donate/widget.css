@@ -1,0 +1,98 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet is meant for the info-donate widget, that shows information about ongoing donations.
+*/
+
+.hc-mantungunion-info-donate {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: calc(var(--base-text-font-size) * 2);
+    padding-top: calc(var(--base-text-font-size) * 6);
+}
+
+.hc-mantungunion-info-donate>.container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-primary-dark);
+    color: var(--color-primary-light);
+    width: clamp(20em, 85vw - 3em, 45em);
+    font-size: calc(var(--base-title-font-size) * 0.5);
+    border-radius: 2em;
+}
+
+.hc-mantungunion-info-donate>.container::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: clamp(250px, 85%, 40em);
+    top: 0px;
+    align-self: flex-end;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-image: url('./bg.png');
+    border-radius: inherit;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+
+.hc-mantungunion-info-donate>.container>.main {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-text-font-size) * 1.5);
+    max-width: clamp(19em, 40%, 40em);
+    font-family: var(--text-font);
+    z-index: 1;
+    position: relative;
+    text-shadow: 0px 0px 0.45em var(--color-primary-dark);
+    padding: 2.5em;
+    border-radius: inherit;
+
+}
+
+.hc-mantungunion-info-donate>.container>.main>.title {
+    font-size: 2.5em;
+    font-family: var(--title-font);
+}
+
+.hc-mantungunion-info-donate>.container>.main>.caption {
+    font-size: 1.5em;
+    font-family: var(--mid-title-font);
+}
+
+.hc-mantungunion-info-donate>.container>.main>.summary {
+    position: relative;
+}
+
+.hc-mantungunion-info-donate>.container>.main::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-primary-dark);
+    z-index: -1;
+    opacity: 0.25;
+    border-radius: inherit;
+}
+
+.hc-mantungunion-info-donate>.container>.main>.summary>count {
+    font-family: var(--mid-title-font);
+    color: var(--color-primary-dark);
+    filter: invert(1) hue-rotate(-60deg) brightness(1.5) grayscale(0.3);
+    text-shadow: none;
+    font-size: 1.5em;
+}
+
+.hc-mantungunion-info-donate>.container>.main>.action>.hc-action-button>.container {
+    color: var(--color-accent-dark);
+    background-color: var(--color-primary-light);
+    font-family: var(--action-button-font);
+    border-radius: 0.95em;
+    text-shadow: none;
+    font-size: clamp(1.2rem, 1.5em, 6vw);
+}

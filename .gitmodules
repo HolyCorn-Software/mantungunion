@@ -1,0 +1,23 @@
+[submodule "system"]
+	path = system
+	url = https://github.com/HolyCorn-Software/system.git
+	branch = main
+[submodule "faculty/engTerminal"]
+	path = faculty/engTerminal
+	url = https://github.com/HolyCorn-Software/engTerminal.git
+	branch = main
+[submodule "faculty/backend_dashboard"]
+	path = faculty/backend_dashboard
+	url = https://github.com/HolyCorn-Software/backend_dashboard.git
+	branch = main
+[submodule "faculty/modernuser"]
+	path = faculty/modernuser
+	url = https://github.com/HolyCorn-Software/modernuser.git
+	branch = main
+[submodule "faculty/uniqueFileUpload"]
+	path = faculty/uniqueFileUpload
+	url = https://github.com/HolyCorn-Software/uniqueFileUpload.git
+	branch = main
+[submodule "faculty/finance"]
+	path = faculty/finance
+	url = https://github.com/HolyCorn-Software/finance

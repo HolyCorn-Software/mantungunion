@@ -1,0 +1,29 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the complete-registration widget
+*/
+
+
+.hc-mantungunion-complete-registration>.container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-title-font-size) * 0.5);
+    font-size: clamp(var(--base-text-font-size) * 1.25, var(--base-title-font-size) * 0.3, 10vw);
+    font-family: var(--text-font);
+}
+
+.hc-mantungunion-complete-registration>.container>.info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-text-font-size);
+}
+
+.hc-mantungunion-complete-registration>.container>.info>.title {
+    font-size: 1.5em;
+    font-family: var(--title-font);
+}
+
+.hc-mantungunion-complete-registration>.container>.info>.title>highlight {
+    color: var(--color-primary-dark);
+}

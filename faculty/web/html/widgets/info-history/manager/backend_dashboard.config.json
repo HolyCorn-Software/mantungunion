@@ -1,0 +1,11 @@
+{
+    "admin": [
+        {
+            "label": "History",
+            "group": "platform_content",
+            "icon": "/$/shared/static/logo.png",
+            "view": "./widget.mjs",
+            "name": "manage_area_history"
+        }
+    ]
+}

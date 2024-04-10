@@ -1,0 +1,19 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the signup page
+*/
+
+
+body>.hc-mantungunion-hero>.container::after {
+    background-size: contain;
+    background-position: 100% 100%;
+    width: calc(clamp(350px, 100%, 100vh) - var(--bg-y-offset));
+    top: calc(var(--bg-y-offset) * -1.5);
+    left: auto;
+    transform: translateX(-5vw);
+    height: unset;
+    min-height: 100%;
+    aspect-ratio: 16/9;
+    align-self: flex-end;
+}

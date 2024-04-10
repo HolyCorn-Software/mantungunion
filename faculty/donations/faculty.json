@@ -1,0 +1,24 @@
+{
+    "label": "Donations",
+    "name": "donations",
+    "init": "./exec.mjs",
+    "meta": {
+        "modernuser": {
+            "permissions": [
+                {
+                    "name": "permissions.donations.create",
+                    "label": "Create donations"
+                },
+                {
+                    "name": "permissions.donations.supervise",
+                    "label": "Modify donations created by others"
+                }
+            ]
+        }
+    },
+    "http": {
+        "staticPaths": {
+            "${fPath}static/": "./public/"
+        }
+    }
+}

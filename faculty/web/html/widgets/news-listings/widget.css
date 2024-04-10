@@ -1,0 +1,94 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet is meant for the news-listings widget, which shows highlights about news (blog posts)
+*/
+
+
+.hc-mantungunion-news-listings>.container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-text-font-size) * 3);
+    align-items: center;
+    padding: calc(var(--base-title-font-size) * 0.5);
+    padding-top: calc(var(--base-title-font-size) * 0.75);
+    padding-bottom: calc(var(--base-title-font-size) * 0.75);
+}
+
+.hc-mantungunion-news-listings>.container>.title {
+    font-size: calc(var(--base-title-font-size) * 0.87);
+    font-family: var(--title-font);
+}
+
+.hc-mantungunion-news-listings>.container>.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--base-text-font-size) * 2);
+}
+
+.hc-mantungunion-news-listings>.container>.main>.more {
+    color: var(--color-link-light);
+    font-family: var(--action-button-font);
+    font-size: calc(var(--base-title-font-size) * 0.65);
+}
+
+
+.hc-mantungunion-news-listings-item>.container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-text-font-size) * 2.5);
+    border-radius: calc(var(--base-text-font-size) * 1.5);
+    box-shadow: 0px 0px 0.75em rgb(199, 198, 198);
+    width: clamp(max(270px, 18em), 65vw, 27em);
+    font-size: calc(var(--base-text-font-size) * 1.15);
+}
+
+.hc-mantungunion-news-listings-item>.container>.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-text-font-size);
+    font-family: var(--text-font);
+}
+
+.hc-mantungunion-news-listings-item>.container>.content>.title {
+    font-size: calc(var(--base-title-font-size) * 0.75);
+    font-family: var(--title-font);
+    color: var(--color-primary-dark);
+}
+
+.hc-mantungunion-news-listings-item>.container>.actions {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.hc-mantungunion-news-listings-item>.container>:is(.content, .actions) {
+
+    padding: var(--base-text-font-size);
+}
+
+.hc-mantungunion-news-listings-item>.container>.actions {
+    padding-top: 0px;
+}
+
+.hc-mantungunion-news-listings-item>.container>.actions>.read-more>.hc-action-button {
+    display: flex;
+}
+
+.hc-mantungunion-news-listings-item>.container>.actions>.read-more>.hc-action-button>.container {
+    border-radius: 0.75em;
+    font-family: var(--action-button-font);
+    background-color: var(--color-link-light);
+}
+
+.hc-mantungunion-news-listings-item>.container>.img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: inherit;
+    background-size: cover;
+    border-bottom-left-radius: 3%;
+    border-bottom-right-radius: 3%;
+    background-color: var(--color-primary-dark);
+    background-position: center;
+}
