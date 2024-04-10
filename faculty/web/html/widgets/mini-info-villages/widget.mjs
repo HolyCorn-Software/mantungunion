@@ -51,8 +51,9 @@ export default class MiniInfoVillages extends Widget {
 
         this.blockWithAction(async () => {
             const areas = await hcRpc.modernuser.zonation.getZones()
-            this.html.$(':scope >.container >.title >count').innerText = areas.length
-            this.items = areas.map(x => ({ label: x.label, villageId: x.id }))
+            const targetAreas = areas.filter(x => x.superzone == '0');
+            this.html.$(':scope >.container >.title >count').innerText = targetAreas.length
+            this.items = targetAreas.map(x => ({ label: x.label, villageId: x.id }))
         })
 
 
