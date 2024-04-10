@@ -76,12 +76,6 @@ export default class CompleteRegistration extends Widget {
             });
 
 
-            // TODO: Remove this test line of code
-            setTimeout(() => {
-                this.paymentView.state_data.payment_data.done = true
-                this.paymentView.state_data.stage = 'success'
-            }, 10_000)
-
         })
 
     }

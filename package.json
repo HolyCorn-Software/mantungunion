@@ -22,7 +22,7 @@
     "formidable-serverless": "^1.1.1",
     "live-plugin-manager": "^0.18.1",
     "mongodb": "^6.5.0",
-    "muser_common": "^3.0.0",
+    "muser_common": "^4.1.0",
     "node-fetch": "^3.3.2",
     "node-static": "^0.7.11",
     "short-uuid": "^4.2.2",
