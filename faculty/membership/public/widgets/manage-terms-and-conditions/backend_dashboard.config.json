@@ -1,0 +1,11 @@
+{
+    "admin": [
+        {
+            "label": "Code of conduct",
+            "icon": "",
+            "name": "manage_terms_and_conditions",
+            "group": "membership_admin",
+            "view": "./widget.mjs"
+        }
+    ]
+}

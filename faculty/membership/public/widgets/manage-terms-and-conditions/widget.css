@@ -1,0 +1,62 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the manage-terms-and-conditions widget, where an authorized personnel can manage the terms and conditions of
+    the system
+*/
+
+.hc-mantungunion-membership-manage-terms-and-conditions>.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions>.container>.top {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions>.container>.top>.title {
+    font-size: 1.5em;
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions>.container>.top>.actions {
+    display: flex;
+    gap: 1em;
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions>.container>.top>.actions>* {
+    display: inline-flex;
+    gap: 1em;
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions>.container>.top>.actions>*>.hc-action-button>.container {
+    border-radius: 1em;
+    font-family: var(--action-button-font);
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions>.container>.content {
+    pointer-events: none;
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions.editMode>.container>.content {
+    border: 0.125em solid currentColor;
+    min-height: 10em;
+    pointer-events: all;
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions.editMode>.container>.top>.actions>.post-edit {
+    font-size: 1em;
+    pointer-events: all;
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions.editMode>.container>.top>.actions>.pre-edit {
+    font-size: 0em;
+    pointer-events: none;
+}
+
+.hc-mantungunion-membership-manage-terms-and-conditions:not(.editMode)>.container>.top>.actions>.post-edit {
+    font-size: 0em;
+    pointer-events: none;
+}

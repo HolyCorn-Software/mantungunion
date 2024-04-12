@@ -4,6 +4,7 @@
  * This module (status), deals with the direct checks of whether a particular user is a member
  */
 
+import muser_common from "muser_common";
 import { CollectionProxy } from "../../../system/database/collection-proxy.js";
 
 
@@ -30,26 +31,28 @@ export default class MembershipStatusController {
             if (!record) {
                 return console.log(`No member registration was found with payment id `, id)
             }
-            if (record.status) {
+            if (record.accepted) {
                 return; // The membership was already paid
             }
 
-            if ((await (await finance()).payment.getPayment({ id })).done) {
-                await collections.status.updateOne({ userid: record.userid, payment: record.payment }, { $set: { status: true } })
+            const paymentData = await (await finance()).payment.getPayment({ id });
+            if (paymentData.done) {
+                await collections.status.updateOne({ userid: record.userid, payment: record.payment }, { $set: { accepted: paymentData.settled_time || Date.now() } })
             }
 
         })
 
 
         // Right now, we're checking the registration records that are unpaid, to see if any were paid while the system had shutdown
-        for await (const record of collections.status.find({ $or: [{ status: false }, { status: { $exists: false } }] })) {
+        for await (const record of collections.status.find({ accepted: { $exists: false } })) {
 
             // And if paid...
             if ((await (await finance()).payment.getPayment({ id: record.payment })).done) {
                 // We mark registration as complete
-                await collections.status.updateOne({ userid: record.userid, payment: record.payment }, { $set: { status: true } })
+                await collections.status.updateOne({ userid: record.userid, payment: record.payment }, { $set: { accepted: paymentData.settled_time || Date.now() } })
             }
         }
+        
 
     }
 
@@ -62,8 +65,8 @@ export default class MembershipStatusController {
     async getMembershipStatus({ userid }) {
         const entry = await this.getMembershipRecord({ userid });
         return {
-            status: entry.status,
-            payment: entry.status ? undefined : entry.payment
+            status: entry.accepted,
+            payment: entry.accepted ? undefined : entry.payment
         }
     }
 
@@ -95,20 +98,19 @@ export default class MembershipStatusController {
         return await (async existing => {
             if (!existing) return
 
-            if (!existing.status) {
+            if (!existing.accepted) {
                 // In case there's a membership record with a failed payment...
                 const status = await (await FacultyPlatform.get().connectionManager.overload.finance()).payment.getPayment({ id: existing.payment })
-                if (status.failed?.fatal) {
+                if (status.failed?.fatal || status.failed?.reason_code?.startsWith('canceled')) {
                     existing.payment = await createPayment()
                     collections.status.updateOne({ userid }, { $set: { payment: existing.payment } })
                 }
             }
-            
+
             return existing
         })((await collections.status.findOne({ userid }))) || await (async () => {
             /** @type {mantungunion.membership.status.StatusEntry} */
             const data = {
-                status: false,
                 userid,
                 payment: await createPayment(),
             }
@@ -126,20 +128,48 @@ export default class MembershipStatusController {
      */
     async getMembershipFee() {
         /** @type {mantungunion.membership.status.Fee} */
-        const currentAmount = await FacultyPlatform.get().settings.get({ name: 'membership_fee', namespace: 'status' })
+        const currentAmount = await FacultyPlatform.get().settings.get({ name: 'membership_fee', namespace: 'membershipDefault' })
         // For the sake of peace, if there's no amount, set the default to 1 XAF
         if (!currentAmount || !currentAmount.currency) {
             const def = { value: 1, currency: 'XAF' }
             await FacultyPlatform.get().settings.set({
                 value: def,
                 name: 'membership_fee',
-                namespace: 'status'
+                namespace: 'membershipDefault'
             });
 
             return def
         }
 
         return currentAmount
+    }
+
+
+    /**
+     * This method returns all successfully accepted members.
+     * @param {object} param0.userid
+     * @returns {AsyncGenerator<mantungunion.membership.status.ExtendedStatusEntry>}
+     */
+    async *getMembers({ userid }) {
+
+        await muser_common.whitelisted_permission_check({
+            userid,
+            permissions: ['permissions.mantungunion.membership.manage'],
+        })
+
+
+        for await (const item of collections.status.find({ accepted: { $exists: true } }, { sort: { accepted: 'desc' } })) {
+            yield {
+                ...item,
+                profile: (x => {
+                    delete x.time
+                    delete x.temporal
+                    delete x.meta
+                    delete x.id
+                    return x
+                })(await (await FacultyPlatform.get().connectionManager.overload.modernuser()).profile.get_profile({ id: item.userid })),
+            }
+        }
     }
 
 }

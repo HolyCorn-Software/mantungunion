@@ -10,6 +10,7 @@ import CAYOFEDOnboarding from "/$/modernuser/onboarding/static/widgets/onboardin
 import LoginWidget from "/$/modernuser/static/widgets/login-widget/widget.mjs";
 import hcRpc from "/$/system/static/comm/rpc/aggregate-rpc.mjs";
 import { Widget, hc } from "/$/system/static/html-hc/lib/widget/index.mjs";
+import HCTSBrandedPopup from "/$/system/static/html-hc/widgets/branded-popup/popup.mjs";
 import { SlideContainer } from "/$/system/static/html-hc/widgets/slide-container/container.mjs";
 
 
@@ -61,6 +62,9 @@ export default class MantungSignup extends Widget {
             slider.html
         )
 
+        /** @type {string} */ this.terms
+        this.htmlProperty(':scope >.container >.main >.terms >.content', 'terms', 'innerHTML')
+
         this.blockWithAction(async () => {
             const loginMain = new LoginWidget({
                 custom: {
@@ -76,7 +80,7 @@ export default class MantungSignup extends Widget {
 
                 await this.blockWithAction(async () => {
                     // In this case, if the user tries to continue, check if his membership is complete
-                    console.log(`Checking membership status `)
+
                     const status = await hcRpc.membership.status.getMembershipStatus()
                     if (status.status) {
                         // Then just continue normally
@@ -107,22 +111,32 @@ export default class MantungSignup extends Widget {
                         setTimeout(() => LoginWidget.prototype.continue.apply(loginMain), 2000)
                     })
 
-                    setTimeout(() => slider.index = 1, 2000)
+                    setTimeout(() => slider.index = 1, 50)
 
                     // After onboarding, comes payment
                     !onboarded ? onboarding.postOnboarding = () => slider.index = 2 : undefined
                 })
 
             }
+
+            this.terms = (await hcRpc.system.settings.get({ faculty: 'membership', namespace: 'membershipDefault', name: 'membership_terms' })) || this.terms
         });
 
         this.html.$(':scope >.container >.main >.terms >.read-more').appendChild(
             new MantungButton(
                 {
                     content: `Read More`,
+                    onclick: () => {
+                        new HCTSBrandedPopup(
+                            {
+                                content: hc.spawn({ innerHTML: this.terms })
+                            }
+                        ).show()
+                    }
                 }
             ).html
-        )
+        );
+
 
     }
 

@@ -1,0 +1,25 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    The Faculty of donations
+    This stylesheet improves the looks of the manage-donations widget
+*/
+
+.hc-mantungunion-donations-item-status {
+    display: inline-flex;
+    position: relative;
+    font-size: 0.85em;
+}
+
+.hc-mantungunion-donations-item-status::before {
+    content: '';
+    width: 1em;
+    height: 1em;
+    border-radius: 100%;
+    background-color: #0FA46E;
+    margin-right: 0.5em;
+}
+
+.hc-mantungunion-donations-item-status.ended::before {
+    filter: invert(1);
+}

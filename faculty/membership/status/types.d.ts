@@ -14,7 +14,8 @@ global {
         interface StatusEntry {
             userid: string
             payment: string
-            status: boolean
+            /** When the registration fee was paid, and the membership was accepted */
+            accepted: number
         }
 
         interface Collections {
@@ -22,15 +23,31 @@ global {
         }
 
         interface Fee extends finance.Amount { }
+
+        interface ExtendedStatusEntry extends StatusEntry {
+            profile: Omit<modernuser.profile.UserProfileData, "id" | "time" | "temporal" | "meta">
+        }
     }
 
     namespace faculty.managedsettings {
         interface all {
             membership_fee: {
                 faculty: 'membership'
-                namespace: 'status'
+                namespace: 'membershipDefault'
                 data: mantungunion.membership.status.Fee
             }
+            membership_terms: {
+
+                faculty: 'membership'
+                namespace: 'membershipDefault'
+                data: string
+            }
+        }
+    }
+
+    namespace modernuser.permission {
+        interface AllPermissions {
+            'permissions.mantungunion.membership.manage': true
         }
     }
 }

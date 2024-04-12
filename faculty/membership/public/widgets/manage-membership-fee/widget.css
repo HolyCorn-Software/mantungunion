@@ -1,0 +1,28 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    The Faculty of Membership
+    This stylesheet targets the manage-membership-fee widget, which is used to change information about the membership fee
+*/
+
+.hc-mantungunion-membership-manage-membership-fee>.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.hc-mantungunion-membership-manage-membership-fee>.container>.main {
+    display: flex;
+    gap: 0.75em;
+    align-items: center;
+}
+
+.hc-mantungunion-membership-manage-membership-fee>.container>.main>.info {
+    font-size: 1.25em;
+    font-family: var(--text-font);
+}
+
+.hc-mantungunion-membership-manage-membership-fee>.container>.main>.edit>.hc-action-button>.container {
+    border-radius: 1em;
+    font-family: var(--action-button-font);
+
+}

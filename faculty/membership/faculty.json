@@ -1,5 +1,28 @@
 {
     "label": "Faculty of Membership",
     "name": "membership",
-    "init": "./exec.mjs"
+    "init": "./exec.mjs",
+    "meta": {
+        "modernuser": {
+            "permissions": [
+                {
+                    "name": "permissions.mantungunion.membership.manage",
+                    "label": "Manage Membership",
+                    "inherits": [
+                        "permissions.modernuser.profiles.search"
+                    ]
+                }
+            ]
+        },
+        "settings": {
+            "membershipDefault": {
+                "public": true
+            }
+        }
+    },
+    "http": {
+        "staticPaths": {
+            "${fPath}/static/": "./public/"
+        }
+    }
 }

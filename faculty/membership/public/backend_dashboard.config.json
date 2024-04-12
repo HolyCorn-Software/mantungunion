@@ -1,0 +1,9 @@
+{
+    "admin": [
+        {
+            "label": "Membership",
+            "icon": "/$/shared/static/logo.png",
+            "name": "membership_admin"
+        }
+    ]
+}

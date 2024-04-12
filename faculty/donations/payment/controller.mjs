@@ -96,8 +96,7 @@ export default class DonationsPaymentController {
 
 
         if (userid) {
-            // TODO: Unblur the 'completed' field
-            const selfEntry = await collections.payment.findOne({ userid, donation: id, /*completed: { $exists: true }*/ })
+            const selfEntry = await collections.payment.findOne({ userid, donation: id, completed: { $exists: true } })
             if (selfEntry) {
                 yield await getProfile(userid)
             }
@@ -112,7 +111,7 @@ export default class DonationsPaymentController {
         const knownDonors = new Set()
 
         // TODO: Unblur the 'completed' field
-        for await (const entry of collections.payment.find({ donation: id, userid: { [userid ? '$ne' : '$exists']: userid || true }, /*completed: { $exists: true }*/ })) {
+        for await (const entry of collections.payment.find({ donation: id, userid: { [userid ? '$ne' : '$exists']: userid || true }, completed: { $exists: true } })) {
             if (!knownDonors.has(entry.userid)) {
                 knownDonors.add(entry.userid)
                 yield await (await FacultyPlatform.get().connectionManager.overload.modernuser()).profile.get_profile({ id: entry.userid })
@@ -157,24 +156,16 @@ export default class DonationsPaymentController {
         // If so, just send back data to be used to complete the payment.
         const existing = await collections.payment.findOne({ userid, completed: { $exists: false }, donation: id, payment: { $exists: true } })
         if (existing) {
+            // Check if the existing payment hasn't terminally faileld
+            const paymentData = await (await FacultyPlatform.get().connectionManager.overload.finance()).payment.getPayment({ id: existing.payment })
+            if (paymentData.failed?.fatal) {
+                existing.payment = await createPayment()
+                collections.payment.updateOne({ userid, donation: id, completed: { $exists: false } }, { $set: { payment: paymentData.id } })
+            }
             return { payment: existing.payment }
         }
 
-        const payment = await (await FacultyPlatform.get().connectionManager.overload.finance()).payment.create({
-            amount: data.amount,
-            owners: [userid],
-            type: 'invoice',
-            meta: {
-                note: `Thank you for donating`,
-                reason: data.label,
-                product: {
-                    category: 'other',
-                    type: 'virtual',
-                    name: data.label,
-                    description: data.description, // This could be a source of bugs for certain payment methods, since the description may carry arbitrary characters
-                }
-            }
-        });
+        const payment = await createPayment();
 
         await collections.payment.insertOne({
             userid,
@@ -184,6 +175,24 @@ export default class DonationsPaymentController {
         })
 
         return { payment }
+
+        async function createPayment() {
+            return await (await FacultyPlatform.get().connectionManager.overload.finance()).payment.create({
+                amount: data.amount,
+                owners: [userid],
+                type: 'invoice',
+                meta: {
+                    note: `Thank you for donating`,
+                    reason: data.label,
+                    product: {
+                        category: 'other',
+                        type: 'virtual',
+                        name: data.label,
+                        description: data.description,
+                    }
+                }
+            });
+        }
     }
 
 

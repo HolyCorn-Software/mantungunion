@@ -51,9 +51,13 @@ export default class DonationsDataController {
 
     /**
      * This method gets donations stored in the system
+     * @param {object} param0
+     * @param {boolean} param0.includeEnded
      */
-    async *getDonations() {
+    async *getDonations({ includeEnded } = {}) {
         const client = arguments[0]
+        includeEnded = arguments[1]?.includeEnded
+        
         const isAdmin = (async () => {
             try {
 
@@ -70,7 +74,12 @@ export default class DonationsDataController {
 
         })()
 
-        for await (const donation of collections.data.find()) {
+
+        for await (const donation of collections.data.find(
+            // Conditionally omit ended donations
+            includeEnded ? {} : { ended: { $exists: false } },
+            { sort: { ended: 'desc' } }
+        )) {
             delete donation._id
             if (!isAdmin) {
                 delete donation.owner

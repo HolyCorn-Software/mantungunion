@@ -40,6 +40,13 @@
     flex-grow: 1;
 }
 
+.hc-mantungunion-signup>.container>.main>.terms>.content {
+    max-height: clamp(350px, 40vh, 450px);
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+}
+
+
 .hc-mantungunion-signup>.container>.main>.terms>.title {
     font-size: 1.95em;
     color: var(--color-accent-dark);

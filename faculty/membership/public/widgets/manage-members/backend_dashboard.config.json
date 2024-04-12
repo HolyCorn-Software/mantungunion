@@ -1,0 +1,11 @@
+{
+    "admin": [
+        {
+            "label": "Members",
+            "icon": "",
+            "name": "membership_members",
+            "group": "membership_admin",
+            "view": "./widget.mjs"
+        }
+    ]
+}
