@@ -57,7 +57,7 @@ export default class DonationsDataController {
     async *getDonations({ includeEnded } = {}) {
         const client = arguments[0]
         includeEnded = arguments[1]?.includeEnded
-        
+
         const isAdmin = (async () => {
             try {
 
@@ -112,6 +112,18 @@ export default class DonationsDataController {
             return; // Either the donation being ended doesn't exists, or the calling user doesn't have sufficient permissions.
         }
         await collections.data.updateOne({ id, ended: { $exists: false } }, { $set: { ended: Date.now() } })
+    }
+
+    /**
+     * This method simply counts the number of ongoing donations.
+     */
+    async countOngoingDonations() {
+        return new JSONRPC.MetaObject(await collections.data.countDocuments({ ended: { $exists: false } }), {
+            cache: {
+                tag: 'donation.count',
+                expiry: 25 * 60 * 1000,
+            }
+        })
     }
 
 }

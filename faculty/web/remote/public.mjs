@@ -5,8 +5,22 @@
  * This features are particularly related to content, and non-standard features
  */
 
+import GalleryController from "../gallery/controller.mjs";
+import GalleryPublicMethods from "../gallery/remote/public.mjs";
+
 
 export default class WebPublicMethods extends FacultyPublicMethods {
+
+    /**
+     * 
+     * @param {object} controllers 
+     * @param {GalleryController} controllers.gallery
+     */
+    constructor(controllers) {
+        super();
+
+        this.gallery = new GalleryPublicMethods(controllers.gallery)
+    }
 
     /**
      * This method returns history of a give area.
@@ -26,7 +40,7 @@ export default class WebPublicMethods extends FacultyPublicMethods {
             name: 'area_history'
         });
 
-        return (allHistory.find(x => x.area == id))?.history || (() => {
+        return (allHistory?.find(x => x.area == id))?.history || (() => {
             console.warn(`There's no history for area `, id)
         })()
 

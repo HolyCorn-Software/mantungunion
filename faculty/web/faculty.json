@@ -15,6 +15,14 @@
                 "public": true,
                 "label": "Widgets public settings"
             }
+        },
+        "modernuser": {
+            "permissions": [
+                {
+                    "name": "permissions.mantungunion.web.gallery.manage",
+                    "label": "Alter information about the events gallery"
+                }
+            ]
         }
     }
 }

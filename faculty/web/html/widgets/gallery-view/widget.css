@@ -1,0 +1,13 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet works on the gallery-view widget, where users view photos of past events.
+*/
+
+
+.hc-mantungunion-gallery-view>.container {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    padding: calc(var(--base-title-font-size) * 0.75);
+}

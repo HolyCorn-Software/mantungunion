@@ -104,14 +104,12 @@ export default class Footer extends Widget {
                         label: `Our History`,
                         href: '/area-history/'
                     },
+                    // {
+                    //     label: `Our Values`
+                    // },
                     {
-                        label: `Our Values`
-                    },
-                    {
-                        label: `Member Villages`
-                    },
-                    {
-                        label: `Event Gallery`
+                        label: `Event Gallery`,
+                        href: '/gallery/'
                     }
                 ]
             }

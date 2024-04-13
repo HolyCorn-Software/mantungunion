@@ -1,0 +1,9 @@
+{
+    "admin": [
+        {
+            "name": "manage_gallery",
+            "view": "./widget.mjs",
+            "label": "Event Gallery"
+        }
+    ]
+}

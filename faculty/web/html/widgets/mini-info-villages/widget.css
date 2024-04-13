@@ -40,3 +40,12 @@
 .hc-mantungunion-mini-info-villages>.container>.items::-webkit-scrollbar {
     color: transparent;
 }
+
+.hc-mantungunion-mini-info-villages>.container>.items>* {
+    cursor: pointer;
+    transition: 0.25s 0.125s;
+}
+
+.hc-mantungunion-mini-info-villages>.container>.items>*:hover {
+    filter: hue-rotate(60deg);
+}

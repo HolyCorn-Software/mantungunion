@@ -1,0 +1,47 @@
+/*  
+    Copyright 2024 HolyCorn Software
+    The mantungunion Project
+    This stylesheet, works on the gallery-view/section widget, where users get to see photos of an event.
+*/
+
+
+.hc-mantungunion-gallery-view-section>.container {
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--base-text-font-size) * 2);
+    gap: 1.5em;
+}
+
+.hc-mantungunion-gallery-view-section>.container>.top {
+    display: flex;
+    position: sticky;
+    top: 1.5em;
+    background-color: white;
+    padding: 1em;
+}
+
+.hc-mantungunion-gallery-view-section>.container>.top>.title {
+    font-size: 1.75em;
+    font-family: var(--title-font);
+}
+
+
+.hc-mantungunion-gallery-view-section>.container>.content {
+    display: flex;
+    gap: 3em;
+    flex-wrap: wrap;
+}
+
+.hc-mantungunion-gallery-view-section-item>.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-family: var(--mid-title-font);
+}
+
+.hc-mantungunion-gallery-view-section-item>.container>.image {
+    width: 16em;
+    height: 9em;
+    border-radius: 1.5em;
+    font-size: calc(var(--base-title-font-size) * 0.5);
+}

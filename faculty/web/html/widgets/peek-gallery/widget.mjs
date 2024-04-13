@@ -6,6 +6,7 @@
 
 import MantungButton from "../mantung-button/widget.mjs";
 import StandardSlider from "../standard-slider/widget.mjs";
+import hcRpc from "/$/system/static/comm/rpc/aggregate-rpc.mjs";
 import { Widget, hc } from "/$/system/static/html-hc/lib/widget/index.mjs";
 
 
@@ -30,7 +31,8 @@ export default class PeekGallery extends Widget {
         this.html.$('.container >.actions >.more').appendChild(
             new MantungButton({
                 content: `View More`,
-                icon: './view-more.svg'
+                icon: './view-more.svg',
+                onclick: () => window.location = '/gallery/'
             }).html
         );
 
@@ -45,35 +47,22 @@ export default class PeekGallery extends Widget {
             target: this,
             transforms: {
                 set: (input) => new PeekGallery.Item(input).html,
-                get: ({ widgetObject: widget }) => ({ galleryEventLabel: widget.galleryEventLabel, image: widget.image, caption: widget.caption, id: widget.id })
+                get: ({ widgetObject: widget }) => ({ galleryEventLabel: widget.galleryEventLabel, image: widget.image, caption: widget.caption })
             }
         }, 'items')
 
-        this.waitTillDOMAttached().then(() => {
-            const sampleEventLabels = [
-                'African Youth Festival 2028',
-                'Miss Culture Cameroon 2035',
-                'Mantung Day 2026'
-            ]
+        this.blockWithAction(async () => {
 
-            const sampleEventCaptions = [
-                ''
-            ]
+            const photoStream = await hcRpc.web.gallery.getRandomPhotos();
 
-            const sampleImgRange = { min: 1, max: 4 }
-            this.items = []
-
-            for (let i = 0; i < 5; i++) {
-
-                this.items.push(
-                    {
-                        id: `sample-${i}`,
-                        galleryEventLabel: sampleEventLabels[i % sampleEventLabels.length],
-                        caption: sampleEventCaptions[i % sampleEventCaptions.length],
-                        image: `./res/sample${(i % (sampleImgRange.max - sampleImgRange.min + 1)) + sampleImgRange.min}.jpeg`
-                    }
-                );
-            }
+            (async () => {
+                for await (const item of photoStream) {
+                    this.items.push({
+                        image: item.url,
+                        caption: item.caption,
+                    })
+                }
+            })()
         })
     }
 

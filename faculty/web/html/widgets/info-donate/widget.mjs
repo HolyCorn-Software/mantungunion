@@ -5,6 +5,7 @@
  */
 
 import MantungButton from "../mantung-button/widget.mjs";
+import hcRpc from "/$/system/static/comm/rpc/aggregate-rpc.mjs";
 import { Widget, hc } from "/$/system/static/html-hc/lib/widget/index.mjs";
 
 
@@ -43,7 +44,11 @@ export default class InfoDonate extends Widget {
                     window.location = '/donate/'
                 }
             }).html
-        )
+        );
+
+        this.blockWithAction(async () => {
+            this.html.$(':scope >.container >.main >.summary >count').innerText = await hcRpc.donations.data.countOngoingDonations()
+        })
 
 
     }

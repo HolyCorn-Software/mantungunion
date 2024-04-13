@@ -13,7 +13,6 @@ global {
         interface Item {
             galleryEventLabel: string
             caption: string
-            id: string
             image: string
         }
     }
