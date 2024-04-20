@@ -19,7 +19,7 @@ export default class MiniInfoVillages extends Widget {
                 classes: MiniInfoVillages.classList,
                 innerHTML: `
                     <div class='container'>
-                        <div class='title'>We are <count>42</count> independent villages</div>
+                        <div class='title'>We are <count>42</count> independent clans</div>
                         <div class='items'></div>
                     </div>
                 `
