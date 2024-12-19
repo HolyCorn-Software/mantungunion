@@ -46,13 +46,14 @@ export default class MembershipStatusController {
         // Right now, we're checking the registration records that are unpaid, to see if any were paid while the system had shutdown
         for await (const record of collections.status.find({ accepted: { $exists: false } })) {
 
+            const paymentData = await (await finance()).payment.getPayment({ id: record.payment });
             // And if paid...
-            if ((await (await finance()).payment.getPayment({ id: record.payment })).done) {
+            if (paymentData.done) {
                 // We mark registration as complete
                 await collections.status.updateOne({ userid: record.userid, payment: record.payment }, { $set: { accepted: paymentData.settled_time || Date.now() } })
             }
         }
-        
+
 
     }
 
